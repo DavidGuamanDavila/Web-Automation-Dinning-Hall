@@ -9,28 +9,28 @@ web = webdriver.Chrome()
 web.get('https://forms.office.com/Pages/ResponsePage.aspx?id=D59Rsb8tIU6_NKaGzpdYioIz-RoWPs5FoBoJAop9UFdUNEcxNlJETVI2U0I4VksxWDRWWjZPVUlFOC4u')
 
 time.sleep(2)
-FirstName = "David"
+FirstName = "Fill in"
 first = web.find_element("xpath", '//*[@id="cover-page-root"]/div[1]/div[2]/div[2]/div[1]/div/div[3]/div/div/textarea')
 first.send_keys(FirstName)
 
 time.sleep(2)
-LastName = "Davila"
+LastName = "Fill in"
 last = web.find_element("xpath", '//*[@id="cover-page-root"]/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div/textarea')
 last.send_keys(LastName)
 
 
 time.sleep(2)
-StudentId = "202014155"
+StudentId = "Fill in"
 studentid = web.find_element("xpath", '//*[@id="cover-page-root"]/div[1]/div[2]/div[2]/div[3]/div/div[3]/div/div/textarea')
 studentid.send_keys(StudentId)
 
 time.sleep(2)
-Phone = "7097256601"
+Phone = "Fill in"
 phone = web.find_element("xpath", '//*[@id="cover-page-root"]/div[1]/div[2]/div[2]/div[4]/div/div[3]/div/div/textarea')
 phone.send_keys(Phone)
 
 time.sleep(2)
-Email = "adguaman@mun.ca"
+Email = "Fill in"
 email = web.find_element("xpath", '//*[@id="cover-page-root"]/div[1]/div[2]/div[2]/div[5]/div/div[3]/div/div/textarea')
 email.send_keys(Email)
 
@@ -40,8 +40,8 @@ agree_btn.click()
 
 
 time.sleep(2)
-#mm/dd/YYYY
-Date = "01/24/2023"
+#Format: mm/dd/YYYY
+Date = "Fill in"
 date = web.find_element("xpath", '//*[@id="DatePicker0-label"]')
 date.send_keys(Date)
 
