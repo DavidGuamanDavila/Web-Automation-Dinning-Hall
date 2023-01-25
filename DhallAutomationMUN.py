@@ -2,6 +2,13 @@ from selenium import webdriver
 import time
 from datetime import datetime, timedelta
 import schedule
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
+import base64
+import pyautogui
+
+
 
 
 #Open chrome browser
@@ -41,6 +48,9 @@ agree_btn.click()
 
 time.sleep(2)
 #Format: mm/dd/YYYY
+#automatically run the code
+#date_tmr = datetime.now() + timedelta(1)
+#Date = date_tmr.strftime('%m/%d/%Y')
 Date = "Fill in"
 date = web.find_element("xpath", '//*[@id="DatePicker0-label"]')
 date.send_keys(Date)
@@ -124,6 +134,32 @@ print(get_confirmation_div_text.text)
 
 if ((get_confirmation_div_text.text) == "Thanks!"):
     print("The Test Was succesful")
+    filePath = '[Add your own path of a .png image]'
+    myScreenshot = pyautogui.screenshot()
+    myScreenshot.save(filePath)
+    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+    from_email = Email("[add your email]")
+    to_email = To("[add your email]")
+    subject = "Dining Hall Confirmation"
+    content = Content("text/plain", "The form has been sent successfuly. Please find the attached image")
 
+    with open(filePath, 'rb') as f:
+        data = f.read()
+        f.close()
+        png = base64.b64encode(data).decode()
+
+    attachment = Attachment(
+        FileContent(png),
+        FileName('Dhall_confirmation.png'),
+        FileType('application/png'),
+        Disposition('attachment')
+
+    )
+    mail = Mail(from_email, to_email, subject,content)
+    mail.attachment = attachment
+    response = sg.client.mail.send.post(request_body=mail.get())
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
 else:
     print("The test was not succesful")
