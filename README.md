@@ -1,6 +1,6 @@
 # Web-Automation-Dinning-Hall-MUN
 ## Description
-<p> This web automation project fills in the Box Lunch Order form of MUN's Dining Hall and submits. </p>
+<p> This web automation project fills in the Box Lunch Order form of MUN's Dining Hall and submits it. </p>
 
 ## Technology Stack
 * Selenium was used to automate the browser.
