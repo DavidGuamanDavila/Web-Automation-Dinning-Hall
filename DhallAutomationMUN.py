@@ -2,11 +2,13 @@ from selenium import webdriver
 import time
 from datetime import datetime, timedelta
 import schedule
-import sendgrid
-import os
-from sendgrid.helpers.mail import *
+import smtplib
+from email.mime.text import MIMEText
 import base64
 import pyautogui
+import os
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 
 
 
@@ -137,29 +139,28 @@ if ((get_confirmation_div_text.text) == "Thanks!"):
     filePath = '[Add your own path of a .png image]'
     myScreenshot = pyautogui.screenshot()
     myScreenshot.save(filePath)
-    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
-    from_email = Email("[add your email]")
-    to_email = To("[add your email]")
+    sender = ("[add your email]")
+    recipients = ("[add your email]")
     subject = "Dining Hall Confirmation"
-    content = Content("text/plain", "The form has been sent successfuly. Please find the attached image")
-
+    body = "The form has been sent successfuly. Please find the attached image"
     with open(filePath, 'rb') as f:
         data = f.read()
         f.close()
-        png = base64.b64encode(data).decode()
+    png = base64.b64encode(data).decode()
 
-    attachment = Attachment(
-        FileContent(png),
-        FileName('Dhall_confirmation.png'),
-        FileType('application/png'),
-        Disposition('attachment')
+    image = MIMEImage(data, name=os.path.basename(filePath))
 
-    )
-    mail = Mail(from_email, to_email, subject,content)
-    mail.attachment = attachment
-    response = sg.client.mail.send.post(request_body=mail.get())
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
+
+    msg = MIMEMultipart(body)
+
+    msg.attach(image)
+    msg['Subject'] = subject
+    msg['From'] = sender
+    msg['To'] = recipients
+    smtp_server = smtplib.SMTP_SSL('mail.smtp2go.com', 465)
+    smtp_server.login("DhallAutoForm", "DhallAuto2023")
+    smtp_server.sendmail(sender, recipients, msg.as_string())
+    smtp_server.quit()
+    
 else:
     print("The test was not succesful")
