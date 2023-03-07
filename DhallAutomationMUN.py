@@ -2,6 +2,15 @@ from selenium import webdriver
 import time
 from datetime import datetime, timedelta
 import schedule
+import smtplib
+from email.mime.text import MIMEText
+import base64
+import pyautogui
+import os
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+
+
 
 
 #Open chrome browser
@@ -41,6 +50,9 @@ agree_btn.click()
 
 time.sleep(2)
 #Format: mm/dd/YYYY
+#automatically run the code
+#date_tmr = datetime.now() + timedelta(1)
+#Date = date_tmr.strftime('%m/%d/%Y')
 Date = "Fill in"
 date = web.find_element("xpath", '//*[@id="DatePicker0-label"]')
 date.send_keys(Date)
@@ -124,6 +136,31 @@ print(get_confirmation_div_text.text)
 
 if ((get_confirmation_div_text.text) == "Thanks!"):
     print("The Test Was succesful")
+    filePath = '[Add your own path of a .png image]'
+    myScreenshot = pyautogui.screenshot()
+    myScreenshot.save(filePath)
+    sender = ("[add your email]")
+    recipients = ("[add your email]")
+    subject = "Dining Hall Confirmation"
+    body = "The form has been sent successfuly. Please find the attached image"
+    with open(filePath, 'rb') as f:
+        data = f.read()
+        f.close()
+    png = base64.b64encode(data).decode()
 
+    image = MIMEImage(data, name=os.path.basename(filePath))
+
+
+    msg = MIMEMultipart(body)
+
+    msg.attach(image)
+    msg['Subject'] = subject
+    msg['From'] = sender
+    msg['To'] = recipients
+    smtp_server = smtplib.SMTP_SSL('mail.smtp2go.com', 465)
+    smtp_server.login("DhallAutoForm", "DhallAuto2023")
+    smtp_server.sendmail(sender, recipients, msg.as_string())
+    smtp_server.quit()
+    
 else:
     print("The test was not succesful")
