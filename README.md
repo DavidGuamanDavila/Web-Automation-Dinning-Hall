@@ -1,19 +1,31 @@
-# Web-Automation-Dinning-Hall-MUN
+# Web-Automation-Dining-Hall-MUN
 ## Description
-<p> This web automation project fills in the Box Lunch Order form of MUN's Dining Hall and submits it. </p>
-<p> The project also sends you a confirmation email that the form was submitted. </p>
+This project automates the process of filling out and submitting the Box Lunch Order form for MUN's Dining Hall. It also includes a feature to send a confirmation email upon successful submission of the form.
 
 ## Technology Stack
-* Selenium was used to automate the browser.
-* Python was used to access different libraries and fill out the form
-* Chrome Developer tools were used to inspect the form and retrieve the Xpath and CSS selector
-
-## Guidence
-
-* You will need to install the following modules using pip install: selenium, sendgrid, and pyautogui
-* To set your email to be able to receive the confirmation please fill the form with your email address: https://forms.gle/JNffJdoeU6cXW6qZ7
-* You will recieve a verification link from SendGrid, please accept it (Please note it might take some time depending on our availability to set your account up)
-* Until the email is set, feel free to comment out lines 137-163
-* Follow the instructions in the form
-
-
+* Selenium: Used for automating web browser interaction.
+* Python: The primary programming language for script development.
+* Chrome Developer Tools: Utilized for inspecting the web form and retrieving Xpath and CSS selectors.
+## Guidance
+### Prerequisites
+* Python: Ensure you have Python installed on your machine.
+* Web Browser: Google Chrome is required for this project.
+### Installation
+1. Clone the Repository: Download the project files from the repository.
+2. Install Required Modules: Use pip to install necessary Python modules:
+Copy code
+``` bash
+pip install selenium sendgrid pyautogui
+```
+##3 Configuration
+- Email Setup:
+  - Fill out the provided form with your email address: Email Setup Form.
+  - You will receive a verification link from SendGrid. Please verify your email.
+  - It may take some time to set up your account, depending on our availability.
+  - If your email is not set up yet, you can comment out lines 137-163 in the script.
+### Usage
+- *Running the Script*: Execute the Python script to start the automation process.
+- *Customizing the Form*: Modify the placeholders in the script (e.g., *FirstName = "Fill in"*) with your specific details.
+### Note
+- The script is configured to fill in default values for testing. Replace these with actual data where necessary.
+- Follow the instructions within the script for further details on customizing your form submission.
