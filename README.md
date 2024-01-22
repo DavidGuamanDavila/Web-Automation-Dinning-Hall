@@ -13,7 +13,6 @@ This project automates the process of filling out and submitting the Box Lunch O
 ### Installation
 1. Clone the Repository: Download the project files from the repository.
 2. Install Required Modules: Use pip to install necessary Python modules:
-Copy code
 ``` bash
 pip install selenium sendgrid pyautogui
 ```
@@ -23,9 +22,30 @@ pip install selenium sendgrid pyautogui
   - You will receive a verification link from SendGrid. Please verify your email.
   - It may take some time to set up your account, depending on our availability.
   - If your email is not set up yet, you can comment out lines 137-163 in the script.
-### Usage
-- *Running the Script*: Execute the Python script to start the automation process.
-- *Customizing the Form*: Modify the placeholders in the script (e.g., *FirstName = "Fill in"*) with your specific details.
+
+## Running the Script
+### Steps to Execute the Script
+1. *Open Terminal or Command Prompt*: Navigate to the folder where you have saved the script.
+
+2. *Set Script Parameters*: Before running the script, ensure that you have filled in your personal information in the script's placeholder fields (e.g., FirstName = "Fill in", etc.).
+
+3. *Run the Script*: Execute the script by typing the following command in your terminal or command prompt:
+
+``` bash
+python3 DhallAutomationMUN.py
+```
+
+
+## What to Expect
+- *Browser Automation*: Upon running the script, a browser window will open, and you will see the automated process of filling out the form.
+- *Email Confirmation*: If everything is set up correctly, you should receive an email confirmation after the form is submitted.
+
 ### Note
 - The script is configured to fill in default values for testing. Replace these with actual data where necessary.
 - Follow the instructions within the script for further details on customizing your form submission.
+
+## Additional Notes
+- *Script Customization*: You can customize the script further to suit different forms or add additional functionality.
+
+- *Automation Ethics*: Remember to use this script responsibly and in compliance with the terms of service of the website you are automating.
+
