@@ -17,7 +17,7 @@ Copy code
 ``` bash
 pip install selenium sendgrid pyautogui
 ```
-##3 Configuration
+### Configuration
 - Email Setup:
   - Fill out the provided form with your email address: Email Setup Form.
   - You will receive a verification link from SendGrid. Please verify your email.
